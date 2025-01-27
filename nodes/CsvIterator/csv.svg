@@ -1,6 +1,2 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg">
-    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M14,2 L20,8 L20,20 C20,21.1 19.1,22 18,22 L6,22 C4.9,22 4,21.1 4,20 L4,4 C4,2.9 4.9,2 6,2 L14,2 Z M13,3.5 L13,9 L18.5,9 L13,3.5 Z M8,12 L8,18 L16,18 L16,12 L8,12 Z M9,13 L15,13 L15,17 L9,17 L9,13 Z" fill="#787878" fill-rule="nonzero"/>
-    </g>
-</svg>
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" xmlns:bx="https://boxy-svg.com" width="100px" height="100px"><defs><bx:export><bx:file format="svg"/></bx:export></defs><path d="M 75 50 A 25 25 0 1 1 50 25" fill="none" stroke="#2563eb" stroke-width="8" stroke-linecap="round"/><path d="M 68.546 32.653 L 53.546 27.653 L 68.546 17.653" fill="none" stroke="#2563eb" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" style="transform-box: fill-box; transform-origin: 50% 50%;" transform="matrix(-1, 0, 0, -1, 0.000003, -0.000001)"/><circle cx="50" cy="50" r="6" fill="#2563eb"/><circle cx="75" cy="50" r="6" fill="#2563eb"/></svg>
