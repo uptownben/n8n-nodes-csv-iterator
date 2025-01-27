@@ -1,45 +1,78 @@
-![Banner image](https://user-images.githubusercontent.com/10284570/173569848-c624317f-42b1-45a6-ab09-f0ea3c247648.png)
+# n8n-nodes-csv-iterator
 
-# n8n-nodes-starter
+This is an n8n community node that provides a CSV Iterator node for processing large CSV files row by row. It supports reading CSV files from local filesystem, Google Drive, or AWS S3 without loading the entire file into memory, making it ideal for processing large datasets efficiently.
 
-This repo contains example nodes to help you get started building your own custom integrations for [n8n](n8n.io). It includes the node linter and other dependencies.
+[n8n](https://n8n.io/) is a [fair-code licensed](https://docs.n8n.io/reference/license/) workflow automation platform.
 
-To make your custom node available to the community, you must create it as an npm package, and [submit it to the npm registry](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry).
+## Installation
 
-## Prerequisites
+Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes/installation/) in the n8n community nodes documentation.
 
-You need the following installed on your development machine:
+## Features
 
-* [git](https://git-scm.com/downloads)
-* Node.js and pnpm. Minimum version Node 18. You can find instructions on how to install both using nvm (Node Version Manager) for Linux, Mac, and WSL [here](https://github.com/nvm-sh/nvm). For Windows users, refer to Microsoft's guide to [Install NodeJS on Windows](https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows).
-* Install n8n with:
-  ```
-  pnpm install n8n -g
-  ```
-* Recommended: follow n8n's guide to [set up your development environment](https://docs.n8n.io/integrations/creating-nodes/build/node-development-environment/).
+- **Multiple Source Support**: Read CSV files from:
+  - Local filesystem
+  - Google Drive
+  - AWS S3
 
-## Using this starter
+- **Memory Efficient**: Processes CSV files row by row without loading the entire file into memory
+- **Configurable CSV Options**:
+  - Custom delimiter support
+  - Header row handling
+  - Empty line skipping
+- **Processing Control**: Configurable delay between processing rows to manage resource usage
+- **Dual Outputs**: 
+  - 'loop' output for each processed row
+  - 'done' output when processing is complete
 
-These are the basic steps for working with the starter. For detailed guidance on creating and publishing nodes, refer to the [documentation](https://docs.n8n.io/integrations/creating-nodes/).
+## Configuration
 
-1. [Generate a new repository](https://github.com/n8n-io/n8n-nodes-starter/generate) from this template repository.
-2. Clone your new repo:
-   ```
-   git clone https://github.com/<your organization>/<your-repo-name>.git
-   ```
-3. Run `pnpm i` to install dependencies.
-4. Open the project in your editor.
-5. Browse the examples in `/nodes` and `/credentials`. Modify the examples, or replace them with your own nodes.
-6. Update the `package.json` to match your details.
-7. Run `pnpm lint` to check for errors or `pnpm lintfix` to automatically fix errors when possible.
-8. Test your node locally. Refer to [Run your node locally](https://docs.n8n.io/integrations/creating-nodes/test/run-node-locally/) for guidance.
-9. Replace this README with documentation for your node. Use the [README_TEMPLATE](README_TEMPLATE.md) to get started.
-10. Update the LICENSE file to use your details.
-11. [Publish](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry) your package to npm.
+### Source Options
 
-## More information
+1. **Local File**
+   - Required: File path to the CSV file
 
-Refer to our [documentation on creating nodes](https://docs.n8n.io/integrations/creating-nodes/) for detailed information on building your own nodes.
+2. **Google Drive**
+   - Required: File ID from Google Drive
+   - Requires Google Drive OAuth2 credentials
+
+3. **AWS S3**
+   - Required: Bucket name and file key
+   - Requires AWS S3 credentials
+
+### CSV Options
+
+- **Delimiter**: Character used to separate fields (default: ',')
+- **Has Header**: Whether the CSV file contains a header row (default: true)
+- **Skip Empty Lines**: Option to skip empty lines in the CSV (default: true)
+
+### Processing Options
+
+- **Processing Delay**: Optional delay (in milliseconds) between processing rows
+
+## Credentials
+
+The node requires appropriate credentials based on the chosen source:
+
+- **Google Drive**: OAuth2 credentials (Client ID, Client Secret)
+- **AWS S3**: Access Key ID and Secret Access Key
+
+## Usage
+
+1. Add the CSV Iterator node to your workflow
+2. Select the source type (Local, Google Drive, or S3)
+3. Configure the source-specific settings
+4. Optional: Adjust CSV parsing options and processing delay
+5. Connect the 'loop' output to nodes that should process each row
+6. Connect the 'done' output to nodes that should run after all rows are processed
+
+The node will read the CSV file row by row, outputting each row as a JSON object through the 'loop' output. Once all rows are processed, it will trigger the 'done' output.
+
+## Resources
+
+* [n8n community nodes documentation](https://docs.n8n.io/integrations/community-nodes/)
+* [Google Drive API documentation](https://developers.google.com/drive/api/v3/about-sdk)
+* [AWS S3 SDK documentation](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/client/s3/)
 
 ## License
 
